@@ -71,8 +71,6 @@ L'objectif de cette mission était de construire plusieurs modèles de régressi
    - **Régression linéaire** : Modèle baseline pour établir un point de référence.
    - **Random Forest** : Algorithme d'ensemble basé sur des arbres de décision.
    - **Gradient Boosting** : Méthode itérative qui optimise un modèle basé sur des erreurs résiduelles.
-   - **Support Vector Regression (SVR)** : Modèle basé sur des marges et des noyaux.
-   - **K-Nearest Neighbors (KNN)** : Approche non paramétrique basée sur les voisins les plus proches.
 
 3. **Suivi des expériences avec MLflow :**
    - Chaque modèle a été entraîné dans une session distincte de MLflow.
@@ -86,8 +84,7 @@ L'objectif de cette mission était de construire plusieurs modèles de régressi
    | Linear Regression    | 0.67  | 0.50 | 0.65 |
    | Random Forest        | 0.50  | 0.33 | 0.81 |
    | Gradient Boosting    | 0.52  | 0.36 | 0.79 |
-   | SVR                 | 1.07  | 0.83 | 0.13 |
-   | KNN                 | 1.07  | 0.83 | 0.12 |
+
 
 #### **Analyse et sélection du meilleur modèle**
 - Le modèle **Random Forest** a obtenu les meilleures performances avec :
@@ -125,7 +122,7 @@ L'objectif de cette mission était de comprendre l'impact des différentes varia
      - D'autres variables comme **AveOccup** (moyenne d'occupation) et **HouseAge** (âge médian des maisons) ont une importance secondaire.
 
    **Graphique d'importances globales :**
-   ![Graphique SHAP Global](chemin/vers/ton/fichier/global_feature_importance.png)
+   ![Graphique SHAP Global](SHAP.png)
 
    - Ce graphique met en évidence que **le revenu médian (MedInc)** est un facteur clé pour prédire le prix des maisons, ce qui est cohérent avec la réalité économique.
 
@@ -170,10 +167,6 @@ L'objectif de cette mission était de comprendre l'impact des différentes varia
 
 3. **Insight général :**
    - Le modèle semble accorder une importance logique et cohérente aux variables, reflétant les facteurs économiques et géographiques influençant les prix des maisons en Californie.
-
-Voici une version simplifiée pour ton rapport :
-
----
 
 ### **Mission 4 : Mise en production
 
@@ -264,6 +257,7 @@ CMD ["uvicorn", "main_californiaHousing:app", "--host", "0.0.0.0", "--port", "80
   shap
   scikit-learn
   matplotlib
+  streamlit
   ```
 
 **3. Construction et exécution de l’image Docker**

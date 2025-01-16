@@ -7,3 +7,4 @@ pydantic
 shap
 scikit-learn
 matplotlib
+streamlit

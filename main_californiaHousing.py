@@ -4,7 +4,7 @@ import mlflow.pyfunc
 import numpy as np
 
 # Charger le modèle depuis MLflow
-model_uri = "models:/California_Housing_Best_Model/2"  # Remplace par l'URI de ton modèle dans MLflow
+model_uri = "models:/California_Housing_Best_Model/1"  
 model = mlflow.pyfunc.load_model(model_uri)
 
 # Initialiser l'application FastAPI

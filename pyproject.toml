@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "projetmlops"
+name = "mlops-california-housing"
 version = "0.1.0"
-description = "Prediction prix immo californie"
-authors = ["Aya Elhaouitti"]
+description = ""
+authors = ["aya elhaouitti"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "3.11.5"
 
 
 [build-system]

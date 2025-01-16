@@ -45,9 +45,7 @@ def train_and_log_model(model, model_name):
 models = {
     "Linear_Regression": LinearRegression(),
     "Random_Forest": RandomForestRegressor(n_estimators=100, random_state=42),
-    "Gradient_Boosting": GradientBoostingRegressor(random_state=42),
-    "SVR": SVR(kernel='rbf', C=100, gamma=0.1),
-    "KNN": KNeighborsRegressor(n_neighbors=5)
+    "Gradient_Boosting": GradientBoostingRegressor(random_state=42)
 }
 
 # **5. Entraîner et suivre les modèles**
