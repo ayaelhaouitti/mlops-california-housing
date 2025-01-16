@@ -29,10 +29,22 @@ jobs:
     - name: Start FastAPI server
       run: |
         nohup python main_californiaHousing.py &
-        sleep 5  # Attendre quelques secondes que le serveur démarre
+        sleep 5  # Donne du temps au serveur pour démarrer
+
+    - name: Wait for the server to be ready
+      run: |
+        for i in {1..10}; do
+          if curl -s http://127.0.0.1:8000/docs; then
+            echo "Server is ready!"
+            break
+          fi
+          echo "Waiting for server..."
+          sleep 2
+        done
 
     - name: Run tests
       run: pytest -v
+
 
   build:
     name: Build Docker Image
