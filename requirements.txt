@@ -1,0 +1,9 @@
+pandas
+numpy
+mlflow
+fastapi
+uvicorn
+pydantic
+shap
+scikit-learn
+matplotlib
