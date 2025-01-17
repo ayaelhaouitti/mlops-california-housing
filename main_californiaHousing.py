@@ -35,3 +35,8 @@ def predict(input_data: HousingInput):
     # Faire une prédiction
     prediction = model.predict(features)
     return {"prediction": float(prediction[0])}
+
+# Point de terminaison pour le contrôle de santé
+@app.get("/health")
+def health_check():
+    return {"status": "UP"}
