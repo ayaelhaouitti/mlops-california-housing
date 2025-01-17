@@ -84,7 +84,6 @@ def test_predict_invalid_payload_missing_fields():
         "HouseAge": 30.0
     }
     response = requests.post(url, json=payload)
-    # Selon votre validation FastAPI/Pydantic, on peut s'attendre à 422 (Unprocessable Entity) ou 400
     assert response.status_code in (400, 422), (
         f"L'API devrait renvoyer une erreur 400/422 en cas de payload invalide. Code: {response.status_code}"
     )
