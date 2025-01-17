@@ -161,9 +161,9 @@ L'objectif de cette mission était de comprendre l'impact des différentes varia
 3. **Insight général :**
    - Le modèle semble accorder une importance logique et cohérente aux variables, reflétant les facteurs économiques et géographiques influençant les prix des maisons en Californie.
 
-### **Mission 4 : Mise en production
+### **Mission 4 : Mise en production**
 
-#### Création de l'API**
+#### **Création de l'API**
 **Objectif**
 L'objectif de cette étape était de rendre le modèle de prédiction accessible via une **API REST**. Cette API permet de recevoir les caractéristiques d'une maison en entrée et de retourner une prédiction du prix médian des maisons en Californie.
 
@@ -310,7 +310,7 @@ Développer une interface utilisateur locale pour tester l’API de prédiction.
 
 ### **Mission 5 : Approche MLOps Avancée**
 
-**Objectif**
+#### **Objectif**
 
 L’objectif de cette mission est de mettre en pratique les bonnes pratiques MLOps en automatisant l’intégration et le déploiement (CI/CD) de notre API de prédiction via GitHub Actions. Nous souhaitons :
 
@@ -318,7 +318,7 @@ L’objectif de cette mission est de mettre en pratique les bonnes pratiques MLO
 2. **Automatiser le déploiement** du modèle MLflow et de l’API FastAPI.
 3. **Valider** que l’API répond correctement (endpoint `/health`) et réalise bien les prédictions (endpoint `/predict`).
 
-**Étapes réalisées**
+#### **Étapes réalisées**
 
 1. **Configuration de GitHub Actions**
 
@@ -400,7 +400,7 @@ Le pipeline se déclenche automatiquement lors d’un **push** ou d’une **pull
 
 ### Mission 6 : Suivi en production
 
-**Objectif**
+#### **Objectif**
 
 L’objectif de cette mission est de **surveiller les performances du modèle en production** et de **détecter d’éventuelles dérives** (data drift) par rapport aux données d’entraînement. Nous cherchons notamment à :
 
@@ -408,7 +408,7 @@ L’objectif de cette mission est de **surveiller les performances du modèle en
 2. **Utiliser** **Evidently** afin de détecter le drift entre les données d’entraînement et ces nouvelles données.
 3. **Analyser** le rapport de drift et proposer des solutions pour réentraîner ou ajuster le modèle si nécessaire.
 
-**Étapes réalisées**
+#### **Étapes réalisées**
 1. **Simulation de données de production**
 
 - Un script `simulation.py` a été développé pour **générer artificiellement** un jeu de données de production.
@@ -454,7 +454,7 @@ D’après le rapport Evidently :
 Cela signifie que les données actuelles (simulées) diffèrent fortement des distributions initiales utilisées pour l’entraînement. Dans un contexte réel, un tel constat implique que **les performances du modèle** peuvent se dégrader si la distribution des données se modifie autant.
 
 
-**Propositions de solutions en cas de drift significatif**
+#### **Propositions de solutions en cas de drift significatif**
 
 1. *Réentraînement (Retraining) du modèle* :  
    - Collecter un échantillon suffisant de nouvelles données réelles (ou simulées) reflétant la **distribution actuelle**.  
@@ -473,14 +473,9 @@ Cela signifie que les données actuelles (simulées) diffèrent fortement des di
    - Déployer un nouveau modèle challenger en parallèle de l’ancien (champion).  
    - Récolter les prédictions et comparer les performances avant de basculer définitivement sur le nouveau modèle si celui-ci s’avère plus performant.
 
-**Conclusion de la Mission**
+#### **Conclusion**
 
 Cette sixième mission a permis de **mettre en évidence** l’importance de **surveiller en continu** la cohérence entre les données d’entraînement et les données réelles en production. Grâce à **Evidently**, nous détectons rapidement les dérives de distribution et pouvons anticiper la perte de performance du modèle.  
-
-**Points essentiels :**
-- La simulation de données de production est un **exercice crucial** pour tester la robustesse du modèle et du pipeline de monitoring.  
-- L’utilisation d’Evidently facilite l’**identification précoce** des features concernées par le drift.  
-- Des mécanismes de **réentraînement** ou de **réadaptation** du modèle sont recommandés pour maintenir des prédictions fiables en production.
 
 ## Références
 
