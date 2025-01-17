@@ -21,6 +21,7 @@ jobs:
           else
             echo "Port 8000 is available"
           fi      
+
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -33,6 +34,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install mlflow  # Assurez-vous d'installer MLflow
+
+      - name: Start MLflow model serving
+        run: |
+          mlflow models serve -m "models:/California_Housing_Best_Model/1" --host 0.0.0.0 --port 5000 &
+          sleep 30  # Laissez du temps pour que le serveur MLflow démarre
 
       - name: Start API with Uvicorn
         run: |
@@ -49,4 +56,4 @@ jobs:
 
       - name: Stop background process
         if: always()
-        run: kill $(ps aux | grep 'uvicorn' | grep -v grep | awk '{print $2}')
+        run: kill $(ps aux | grep 'uvicorn\|mlflow' | grep -v grep | awk '{print $2}')
