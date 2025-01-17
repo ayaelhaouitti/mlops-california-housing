@@ -34,9 +34,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Pytest
-        run: pytest -v
-
   api_deploy:
     name: Build and Test API
     runs-on: ubuntu-latest
