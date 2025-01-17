@@ -37,8 +37,12 @@ jobs:
 
       - name: Start MLflow model serving
         run: |
-          mlflow models serve -m "models:/California_Housing_Best_Model/1" --host 0.0.0.0 --port 5000 &
-          sleep 30  
+          mlflow models serve \
+          --model-uri "./mlruns/196678121596541976/3e983990f0f940c9833110571636c3ba/artifacts/model" \
+          --host 0.0.0.0 \
+          --port 5000 &
+          sleep 30
+ 
 
       - name: Start API with Uvicorn
         run: |
