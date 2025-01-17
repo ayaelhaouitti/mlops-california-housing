@@ -17,7 +17,7 @@ Longitude = st.number_input("Longitude", -125.0, -114.0, step=0.1)
 
 # Bouton pour envoyer les données à l'API
 if st.button("Obtenir une prédiction"):
-    # URL de l'API (ajuste selon ton déploiement)
+    # URL de l'API 
     api_url = "http://127.0.0.1:8000/predict"
     
     # Préparation des données en format JSON
