@@ -39,6 +39,7 @@ jobs:
         run: |
           mlflow models serve \
           --model-uri "./mlruns/196678121596541976/3e983990f0f940c9833110571636c3ba/artifacts/model" \
+          --env-manager local \
           --host 0.0.0.0 \
           --port 5000 &
           sleep 30
