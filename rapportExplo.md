@@ -63,7 +63,7 @@ L'objectif de cette mission était de construire plusieurs modèles de régressi
      - **R²** (Coefficient de détermination)
 
 2. **Modèles testés :**
-   Cinq modèles ont été entraînés et évalués :
+   3 modèles ont été entraînés et évalués :
    - **Régression linéaire** : Modèle baseline pour établir un point de référence.
    - **Random Forest** : Algorithme d'ensemble basé sur des arbres de décision.
    - **Gradient Boosting** : Méthode itérative qui optimise un modèle basé sur des erreurs résiduelles.
@@ -90,7 +90,7 @@ L'objectif de cette mission était de construire plusieurs modèles de régressi
 - Ce modèle a été sélectionné comme le meilleur modèle pour cette étape.
 
 #### **Enregistrement du meilleur modèle**
-Le modèle **Random Forest** a été enregistré dans le **Model Registry** de MLflow sous le nom **California_Housing_Best_Model** pour une utilisation future. Cela permettra de le recharger facilement pour des prédictions ou de futures analyses.
+Le modèle **Random Forest** a été enregistré dans le **Model Registry** de MLflow sous le nom **California_Housing_Best_Model** pour une utilisation future (document `choixModele.py`). Cela permettra de le recharger facilement pour des prédictions ou de futures analyses.
 
 #### **Conclusion**
 Cette étape a permis de tester et d’évaluer différents algorithmes de régression. Grâce à MLflow, nous avons pu comparer les performances de chaque modèle et identifier le modèle Random Forest comme étant le plus performant. Ce modèle sera utilisé pour les prochaines étapes du projet.
@@ -103,12 +103,10 @@ L'objectif de cette mission était de comprendre l'impact des différentes varia
 1. **Impact global** : Importance moyenne des variables sur toutes les prédictions.
 2. **Impact local** : Influence des variables sur les prédictions spécifiques pour des exemples individuels.
 
----
-
 #### **Étapes réalisées**
 
 1. **Analyse des importances globales des features :**
-   - Nous avons utilisé la bibliothèque **SHAP (SHapley Additive exPlanations)** pour calculer les importances globales des variables.
+   - Utilisation de la bibliothèque **SHAP (SHapley Additive exPlanations)** pour calculer les importances globales des variables.
    - Le graphique généré montre les variables triées par leur impact moyen sur les prédictions :
      - **MedInc (Median Income)** est la variable la plus influente globalement.
      - Les variables géographiques (**Latitude** et **Longitude**) jouent également un rôle significatif.
@@ -120,7 +118,7 @@ L'objectif de cette mission était de comprendre l'impact des différentes varia
    - Ce graphique met en évidence que **le revenu médian (MedInc)** est un facteur clé pour prédire le prix des maisons, ce qui est cohérent avec la réalité économique.
 
 2. **Analyse des impacts locaux :**
-   - Nous avons étudié trois exemples aléatoires pour analyser comment les variables influencent les prédictions individuelles.
+   - étude de trois exemples aléatoires pour analyser comment les variables influencent les prédictions individuelles.
    - Pour chaque exemple, un graphique SHAP interactif (**force plot**) a été généré, montrant :
      - **Les variables qui augmentent la prédiction** (barres rouges).
      - **Les variables qui diminuent la prédiction** (barres bleues).
@@ -158,7 +156,7 @@ L'objectif de cette mission était de comprendre l'impact des différentes varia
      - Dans certains cas, **MedInc** est le facteur dominant.
      - Dans d'autres cas, des variables comme **Latitude** ou **AveOccup** ont un impact plus significatif.
 
-3. **Insight général :**
+3. **Résumé :**
    - Le modèle semble accorder une importance logique et cohérente aux variables, reflétant les facteurs économiques et géographiques influençant les prix des maisons en Californie.
 
 ### **Mission 4 : Mise en production**
@@ -179,8 +177,7 @@ L'objectif de cette étape était de rendre le modèle de prédiction accessible
 
 3. **Lancement et test de l'API :**
    - L'API a été lancée localement avec **Uvicorn**.
-   - Les requêtes ont été testées via **Swagger UI** (documentation interactive générée automatiquement par FastAPI).
-
+  
 4. **Exemple de réponse de l'API :**
    - Requête envoyée à l'API :
      ```json
@@ -263,15 +260,12 @@ CMD ["uvicorn", "main_californiaHousing:app", "--host", "0.0.0.0", "--port", "80
 **Difficultés rencontrées**
 
 **Installation et configuration de Docker Desktop**
-- Docker Desktop ne s’ouvrait pas correctement, empêchant l’utilisation du démon Docker. Cela a nécessité :
-  - Une réinstallation complète de Docker Desktop.
-  - Une transition temporaire vers **Colima**, un gestionnaire Docker alternatif, avant que Docker Desktop ne fonctionne correctement.
+Je n'ai pas réussi à installer Docker Desktop pour cette étape, j'ai donc du passer par Colima.
 
 **Résultats**
 
 1. **API conteneurisée :**
    - Une fois Docker configuré, l’API a été conteneurisée avec succès.
-   - L’image Docker peut être partagée et déployée sur n’importe quel environnement compatible Docker.
 
 2. **Exécution locale :**
    - Le conteneur Docker a été exécuté localement et l’API était accessible via :
@@ -283,7 +277,7 @@ CMD ["uvicorn", "main_californiaHousing:app", "--host", "0.0.0.0", "--port", "80
    - Le projet est désormais indépendant de l’environnement local grâce à la conteneurisation.
 
 **Conclusion**
-Malgré les difficultés rencontrées lors de l’installation et de la configuration de Docker, la conteneurisation de l’API a été réalisée avec succès. Cela marque une étape importante vers le déploiement potentiel du projet dans un environnement cloud.
+Malgré les difficultés rencontrées lors de l’installation et de la configuration de Docker, la conteneurisation de l’API a été réalisée avec succès. 
 
 #### **Créer une interface utilisateur locale avec Streamlit pour tester l’API**
 **Objectif**
@@ -304,25 +298,17 @@ Développer une interface utilisateur locale pour tester l’API de prédiction.
 3. **Résultat :**
    - Une interface simple et intuitive permet de tester l’API en temps réel.
 
-**Difficultés rencontrées**
-- Assurer que l’API soit en cours d’exécution avant de lancer Streamlit.
-- Gérer les erreurs de requêtes HTTP en cas de défaillance de l’API.
-
 ### **Mission 5 : Approche MLOps Avancée**
 
 #### **Objectif**
 
-L’objectif de cette mission est de mettre en pratique les bonnes pratiques MLOps en automatisant l’intégration et le déploiement (CI/CD) de notre API de prédiction via GitHub Actions. Nous souhaitons :
-
-1. **Assurer la qualité du code** à travers des tests unitaires et d’intégration (Pytest).
-2. **Automatiser le déploiement** du modèle MLflow et de l’API FastAPI.
-3. **Valider** que l’API répond correctement (endpoint `/health`) et réalise bien les prédictions (endpoint `/predict`).
+L’objectif de cette mission est de mettre en pratique les bonnes pratiques MLOps en automatisant l’intégration et le déploiement (CI/CD) de l'API de prédiction via GitHub Actions. 
 
 #### **Étapes réalisées**
 
 1. **Configuration de GitHub Actions**
 
-- Un fichier **`CI/CD Pipeline for California Housing Project`** (`.github/workflows/ci.yml`) a été créé pour définir les étapes suivantes :  
+- Un fichier **`CI/CD Pipeline for California Housing Project`** (`.github/workflows/ci-cd.yml`) a été créé pour définir les étapes suivantes :  
   1. **Checkout** du code (avec support de Git LFS pour récupérer le modèle).  
   2. **Installation** des dépendances Python (requirements).  
   3. **Démarrage du serving MLflow** (pour charger le modèle Random Forest localement).  
@@ -337,7 +323,7 @@ Le pipeline se déclenche automatiquement lors d’un **push** ou d’une **pull
 
 - Les **tests** sont regroupés dans un fichier dédié, par exemple `tests/test_api.py`.  
 - Les scénarios testés incluent :  
-  1. **Test de prédiction valide** : Vérifier qu’une requête bien formée retourne un code `200` et un champ `prediction` de type float.  
+  1. **Test de prédiction valide** : Vérifier qu’une requête bien formée retourne un code `200` et un champ `prediction` de type float. 
   2. **Valeurs extrêmes** (très petites ou très grandes) : S’assurer que l’API ne plante pas et retourne une prédiction float.  
   3. **Payloads invalides** : Tester les réponses 400/422 quand des champs sont manquants ou de type incorrect.  
   4. **État de santé** : Vérifier que `/health` retourne bien `{"status": "UP"}`.
@@ -382,10 +368,10 @@ Le pipeline se déclenche automatiquement lors d’un **push** ou d’une **pull
   ```bash
   kill $(ps aux | grep 'uvicorn\|mlflow' | grep -v grep | awk '{print $2}')
   ```
-
+  
 5. **Résultats et bénéfices**
 
-1. *Cycle de vie automatisé* : À chaque push ou PR, GitHub Actions :  
+1. *Cycle de vie automatisé* : À chaque push, GitHub Actions :  
    - Télécharge le code et le modèle.  
    - Installe l’environnement.  
    - Lance MLflow et l’API.  
@@ -397,6 +383,9 @@ Le pipeline se déclenche automatiquement lors d’un **push** ou d’une **pull
 3. *Traçabilité et rapidité* : En cas d’erreur, il est facile d’identifier la cause via les logs du pipeline. Les développeurs peuvent corriger le code et republier.  
 
 4. *Préparation au déploiement* : Ce pipeline est un socle pour aller plus loin (par exemple, déployer automatiquement sur un service cloud après validation des tests).
+
+#### **Difficultés rencontrées**
+J'ai rencontré des difficultés dans la mise en place des tests et plus précisément au niveau du lancement de mlflow et de l'api. Je n'arrivais pas à push mes model.pkl qui se trouvaient dans mon dossier mlruns, donc j'ai du passer par Git LFS (Large File Storage) pour pouvoir avoir des tests qui aboutissent.
 
 ### Mission 6 : Suivi en production
 
@@ -453,7 +442,6 @@ D’après le rapport Evidently :
 
 Cela signifie que les données actuelles (simulées) diffèrent fortement des distributions initiales utilisées pour l’entraînement. Dans un contexte réel, un tel constat implique que **les performances du modèle** peuvent se dégrader si la distribution des données se modifie autant.
 
-
 #### **Propositions de solutions en cas de drift significatif**
 
 1. *Réentraînement (Retraining) du modèle* :  
@@ -469,10 +457,6 @@ Cela signifie que les données actuelles (simulées) diffèrent fortement des di
    - Surveiller régulièrement la performance du modèle (métriques en production, tel que le RMSE ou MAE si la vérité terrain est disponible).  
    - Comparer ces métriques avec celles du training initial pour détecter une baisse de performance liée au drift.
 
-4. *Stratégie “Champion/Challenger”* :  
-   - Déployer un nouveau modèle challenger en parallèle de l’ancien (champion).  
-   - Récolter les prédictions et comparer les performances avant de basculer définitivement sur le nouveau modèle si celui-ci s’avère plus performant.
-
 #### **Conclusion**
 
 Cette sixième mission a permis de **mettre en évidence** l’importance de **surveiller en continu** la cohérence entre les données d’entraînement et les données réelles en production. Grâce à **Evidently**, nous détectons rapidement les dérives de distribution et pouvons anticiper la perte de performance du modèle.  
@@ -481,10 +465,9 @@ Cette sixième mission a permis de **mettre en évidence** l’importance de **s
 
 - **Données** : [`California Housing` (sklearn)](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_california_housing.html)  
 - **Documentation Python** : [scikit-learn](https://scikit-learn.org)  
-- **Documentation officielle de GitHub Actions** : [docs.github.com/actions](https://docs.github.com/actions)  
+- **Documentation GitHub Actions** : [docs.github.com/actions](https://docs.github.com/actions)  
 - **Documentation MLflow Models Serve** : [mlflow.org/docs/latest/cli.html#mlflow-models-serve](https://mlflow.org/docs/latest/cli.html#mlflow-models-serve)  
-- **FastAPI – Deploying with Uvicorn** : [fastapi.tiangolo.com/deployment/](https://fastapi.tiangolo.com/deployment/)  
-- **Pytest** : [docs.pytest.org/en/latest/](https://docs.pytest.org/en/latest/)  
-- **Evidently** : [docs.evidentlyai.com](https://docs.evidentlyai.com/)  
-- **MLflow – Tracking & Model Registry** : [mlflow.org/docs/latest/index.html](https://mlflow.org/docs/latest/index.html)  
-- **Approches d’alertes – Monitoring ML Models in Production (Article)** : [mlops.community](https://mlops.community/)  
+- **Documentation FastAPI – Deploying with Uvicorn** : [fastapi.tiangolo.com/deployment/](https://fastapi.tiangolo.com/deployment/)  
+- **Documentation Pytest** : [docs.pytest.org/en/latest/](https://docs.pytest.org/en/latest/)  
+- **Documentation Evidently** : [docs.evidentlyai.com](https://docs.evidentlyai.com/)  
+- **Documentation MLflow – Tracking & Model Registry** : [mlflow.org/docs/latest/index.html](https://mlflow.org/docs/latest/index.html) 
