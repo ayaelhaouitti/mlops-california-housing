@@ -50,7 +50,7 @@ jobs:
       - name: Start API with Uvicorn
         run: |
           uvicorn main_tests:app --host 0.0.0.0 --port 8000 &
-          sleep 20  # Increased the sleep time to ensure the API is up
+          sleep 20  
 
       - name: Check API health
         run: |
