@@ -50,10 +50,10 @@ jobs:
           pip install poetry
           poetry install
 
-      - name: Start API with nohup
+      - name: Start API with uvicorn
         run: |
-          nohup python main_californiaHousing.py &
-          sleep 20
+          nohup poetry run uvicorn main_californiaHousing:app --host 0.0.0.0 --port 8000 &
+          sleep 10  
         
       - name: Test API
         run: poetry run pytest tests/test_api.py -v
