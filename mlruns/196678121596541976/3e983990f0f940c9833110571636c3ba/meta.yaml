@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/ayaelhaouitti/mlops-california-housing/mlruns/196678121596541976/3e983990f0f940c9833110571636c3ba/artifacts
+end_time: 1737141431120
+entry_point_name: ''
+experiment_id: '196678121596541976'
+lifecycle_stage: active
+run_id: 3e983990f0f940c9833110571636c3ba
+run_name: Random_Forest_Run
+run_uuid: 3e983990f0f940c9833110571636c3ba
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737141421272
+status: 3
+tags: []
+user_id: ayaelhaouitti

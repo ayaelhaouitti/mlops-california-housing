@@ -1,0 +1,6 @@
+artifact_location: file:///Users/ayaelhaouitti/mlops-california-housing/mlruns/196678121596541976
+creation_time: 1737141418890
+experiment_id: '196678121596541976'
+last_update_time: 1737141418890
+lifecycle_stage: active
+name: California_Housing_Experiment
