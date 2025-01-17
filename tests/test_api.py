@@ -3,7 +3,7 @@ import requests
 # Test pour vérifier que l'API répond correctement
 def test_predict_api():
     # URL de l'API locale
-    url = "http://127.0.0.1:8000/predict"
+    url = "http://127.0.0.1:8000/docs"
 
     # Données d'entrée pour la prédiction
     payload = {
