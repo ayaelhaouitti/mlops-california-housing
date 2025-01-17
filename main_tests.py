@@ -11,7 +11,7 @@ app = FastAPI(
 )
 
 # Chemin relatif au modèle dans le dépôt GitHub
-model_path = "runs:/c635df38c1784de48669b42e694dee8d/model"
+model_path = "runs:/3e983990f0f940c9833110571636c3ba/model"
 
 # Charger le modèle depuis MLflow
 model = mlflow.pyfunc.load_model(model_path)
