@@ -1,6 +1,6 @@
 import shap
 import matplotlib.pyplot as plt
-import mlflow.sklearn  # Import nécessaire pour charger les modèles scikit-learn via MLflow
+import mlflow.sklearn  
 from sklearn.ensemble import RandomForestRegressor
 import pandas as pd
 

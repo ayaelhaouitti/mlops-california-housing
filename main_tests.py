@@ -11,8 +11,6 @@ app = FastAPI(
 )
 
 model_path = "./mlruns/196678121596541976/3e983990f0f940c9833110571636c3ba/artifacts/model"
-
-# Charger le modèle depuis ce chemin local
 model = mlflow.pyfunc.load_model(model_path)
 
 class HousingInput(BaseModel):

@@ -1,4 +1,3 @@
-# Utiliser une image Python légère comme base
 FROM python:3.11-slim
 
 # Définir le répertoire de travail
